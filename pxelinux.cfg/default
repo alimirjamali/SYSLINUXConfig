@@ -1,27 +1,49 @@
+# SYS/ISO/PXELINUX custom configuration menu.
+#
+# Copyright Ali Mirjamali (2016) under GPLv2 terms
+
 DEFAULT vesamenu.c32
 PROMPT 0
 MENU TITLE PXEBoot Server. My favorite Tools & Gadgets
-TIMEOUT 200
+TIMEOUT 180
 TOTALTIMEOUT 6000
 ONETIMEOUT local
 
+# Booting from local operating system
 LABEL local
 	MENU LABEL Boot existing OS
 	MENU DEFAULT
 	LOCALBOOT 0
 
+# Running Memtest86+, assuming that the binary exists as memtest/memtest
 LABEL Memtest
 	MENU LABEL Run Memtest86+ (RAM test)
 	KERNEL memtest/memtest
 
+# Hardware Detection Tool binary is required
 LABEL hdt
 	MENU LABEL Hardware Detection Tool (HDT)
 	COM32 hdt.c32
 
+# Games
+	MENU SEPARATOR
+
+# Small snail game (by Alok Mengharajani). See https://quaxio.com/bootloader_retro_game_tweet/
+# This would require memdisk binary
+LABEL snail
+	MENU LABEL Retro Snail Game
+	LINUX memdisk
+	INITRD snail/floppy.img
+
+# Reboot & Power Off
+	MENU SEPARATOR
+
+# Reboot requires reboot.c32 binary
 LABEL reboot
 	MENU LABEL Reboot
 	COM32 reboot.c32
 
+# Power Off requires poweroff.c32 binary
 LABEL poweroff
 	MENU LABEL Power Off
 	COM32 poweroff.c32
