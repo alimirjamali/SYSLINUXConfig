@@ -4,7 +4,11 @@
 
 DEFAULT vesamenu.c32
 PROMPT 0
-MENU TITLE PXEBoot Server. My favorite Tools & Gadgets
+MENU TITLE Ali's PXE Server. My favorite tools
+MENU BACKGROUND background.png
+MENU WIDTH 60
+MENU HSHIFT 25
+MENU COLOR TITLE 7;37;40 #e0000000 #ffffffff all
 TIMEOUT 180
 TOTALTIMEOUT 6000
 ONETIMEOUT local
